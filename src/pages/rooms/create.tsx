@@ -1,12 +1,33 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useState } from "react";
 import Button from "../../components/Button";
 import { useAuth } from "../../hooks/useAuth";
+import { database } from "../../services/firebase";
 
 const NewRoom: NextPage = () => {
-  // const { user } = useAuth();
+  const router = useRouter();
+  const { user } = useAuth();
+
+  const [name, setName] = useState<string>();
+
+  async function handleCreateRoom(event: FormEvent) {
+    event.preventDefault();
+
+    if (name?.trim() === "") return;
+
+    const roomRef = database.ref("rooms");
+
+    const firebaseRoom = await roomRef.push({
+      title: name,
+      author_id: user?.id,
+    });
+
+    router.push(`/rooms/${firebaseRoom.key}`);
+  }
 
   return (
     <>
@@ -38,8 +59,13 @@ const NewRoom: NextPage = () => {
 
             <h2>Crie uma nova sala</h2>
 
-            <form>
-              <input type="text" placeholder="Nome da sala" />
+            <form onSubmit={handleCreateRoom}>
+              <input
+                type="text"
+                placeholder="Nome da sala"
+                value={name}
+                onChange={event => setName(event.target.value)}
+              />
 
               <Button type="submit">Criar sala</Button>
               <p>
