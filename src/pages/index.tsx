@@ -2,12 +2,17 @@ import type { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
+
 import Button from "../components/Button";
+import { useAuth } from "../hooks/useAuth";
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const { signInWithGoogle, user } = useAuth();
 
-  function navigateToNewRoom() {
+  async function handleCreateRoom() {
+    if (!user) await signInWithGoogle();
+
     router.push("/rooms/create");
   }
 
@@ -39,7 +44,7 @@ const Home: NextPage = () => {
               height={70}
             />
 
-            <button className="create-room" onClick={navigateToNewRoom}>
+            <button className="create-room" onClick={handleCreateRoom}>
               <Image
                 src="/assets/images/google-icon.svg"
                 alt="Logo do Google"

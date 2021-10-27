@@ -3,8 +3,11 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../../components/Button";
+import { useAuth } from "../../hooks/useAuth";
 
 const NewRoom: NextPage = () => {
+  // const { user } = useAuth();
+
   return (
     <>
       <Head>
