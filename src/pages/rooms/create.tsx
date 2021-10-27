@@ -1,20 +1,14 @@
 import type { NextPage } from "next";
-import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
-import Button from "../components/Button";
+import Link from "next/link";
+import Button from "../../components/Button";
 
-const Home: NextPage = () => {
-  const router = useRouter();
-
-  function navigateToNewRoom() {
-    router.push("/rooms/create");
-  }
-
+const NewRoom: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home | Letmeask</title>
+        <title>Criar sala | Letmeask</title>
       </Head>
 
       <div id="page-auth">
@@ -39,22 +33,16 @@ const Home: NextPage = () => {
               height={70}
             />
 
-            <button className="create-room" onClick={navigateToNewRoom}>
-              <Image
-                src="/assets/images/google-icon.svg"
-                alt="Logo do Google"
-                width={24}
-                height={24}
-              />
-              Crie sua sala com o Google
-            </button>
-
-            <span className="separator">Ou entre em uma sala</span>
+            <h2>Crie uma nova sala</h2>
 
             <form>
-              <input type="text" placeholder="Digite o código da sala" />
+              <input type="text" placeholder="Nome da sala" />
 
-              <Button type="submit">Entrar na sala</Button>
+              <Button type="submit">Criar sala</Button>
+              <p>
+                Quer entrar em uma sala existente?{" "}
+                <Link href="/">Clique aqui</Link>
+              </p>
             </form>
           </div>
         </main>
@@ -63,4 +51,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default NewRoom;
