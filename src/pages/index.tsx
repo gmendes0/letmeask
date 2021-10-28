@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           <div className="main-content">
             <Image
               src="/assets/images/logo.svg"
-              alt="Letmeask logo"
+              alt={t("app-logo-alt")}
               width={150}
               height={70}
             />
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
             <button className="create-room" onClick={handleCreateRoom}>
               <Image
                 src="/assets/images/google-icon.svg"
-                alt={t("logo-alt")}
+                alt={t("google-logo-alt")}
                 width={24}
                 height={24}
               />

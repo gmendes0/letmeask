@@ -6,7 +6,7 @@
   "join-button": "Entrar na sala",
   "room-code-input": "Digite o código da sala",
   "illustration-alt": "Illustrção da applicação",
-  "logo-alt": "Logo do Google",
+  "google-logo-alt": "Logo do Google",
   "create-room-text": "Crie uma nova sala",
   "room-name-input": "Nome da sala",
   "create-room-button": "Criar sala",
@@ -14,5 +14,12 @@
   "click-here": "Clique aqui",
   "create-room-title": "Criar sala",
   "home-title": "Home",
-  "room-doesnt-exists-alert": "Room doesn't exists."
+  "room-doesnt-exists-alert": "Room doesn't exists.",
+  "app-logo-alt": "Letmeask Logo",
+  "room": "Sala",
+  "questions": "perguntas",
+  "question-textarea": "O que você quer perguntar?",
+  "to-send-question": "Para enviar uma pergunta",
+  "do-login": "faça seu login",
+  "send-question": "Enviar pergunta"
 }
