@@ -3,6 +3,8 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Button from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
@@ -11,7 +13,7 @@ import { database } from "../services/firebase";
 const Home: NextPage = () => {
   const router = useRouter();
   const { signInWithGoogle, user } = useAuth();
-  ("");
+  const { t } = useTranslation("common");
 
   const [roomCode, setRoomCode] = useState<string>();
 
@@ -29,7 +31,7 @@ const Home: NextPage = () => {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert("Room doesn't exists.");
+      alert(t("room-doesnt-exists-alert"));
       return;
     }
 
@@ -39,20 +41,20 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home | Letmeask</title>
+        <title>{t("home-title")} | Letmeask</title>
       </Head>
 
       <div id="page-auth">
         <aside>
           <Image
             src="/assets/images/illustration.svg"
-            alt="Illustrção da applicação"
+            alt={t("illustration-alt")}
             width={640}
             height={640}
           />
 
-          <strong>Crie salas de Q&A ao vivo</strong>
-          <p>Tire dúvidas da sua audiência em tempo real</p>
+          <strong>{t("app-h1")}</strong>
+          <p>{t("app-h2")}</p>
         </aside>
 
         <main>
@@ -67,24 +69,24 @@ const Home: NextPage = () => {
             <button className="create-room" onClick={handleCreateRoom}>
               <Image
                 src="/assets/images/google-icon.svg"
-                alt="Logo do Google"
+                alt={t("logo-alt")}
                 width={24}
                 height={24}
               />
-              Crie sua sala com o Google
+              {t("create-room-google-button")}
             </button>
 
-            <span className="separator">Ou entre em uma sala</span>
+            <span className="separator">{t("separator")}</span>
 
             <form onSubmit={handleJoinRoom}>
               <input
                 type="text"
-                placeholder="Digite o código da sala"
+                placeholder={t("room-code-input")}
                 value={roomCode}
                 onChange={event => setRoomCode(event.target.value)}
               />
 
-              <Button type="submit">Entrar na sala</Button>
+              <Button type="submit">{t("join-button")}</Button>
             </form>
           </div>
         </main>
@@ -94,3 +96,12 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+      // Will be passed to the page component as props
+    },
+  };
+}

@@ -1,0 +1,18 @@
+{
+  "app-h1": "Crie salas de Q&A ao vivo",
+  "app-h2": "Tire dúvidas da sua audiência em tempo real",
+  "create-room-google-button": "Crie sua sala com o Google",
+  "separator": "Ou entre em uma sala",
+  "join-button": "Entrar na sala",
+  "room-code-input": "Digite o código da sala",
+  "illustration-alt": "Illustrção da applicação",
+  "logo-alt": "Logo do Google",
+  "create-room-text": "Crie uma nova sala",
+  "room-name-input": "Nome da sala",
+  "create-room-button": "Criar sala",
+  "join-existent-room-text": "Quer entrar em uma sala existente?",
+  "click-here": "Clique aqui",
+  "create-room-title": "Criar sala",
+  "home-title": "Home",
+  "room-doesnt-exists-alert": "Room doesn't exists."
+}
