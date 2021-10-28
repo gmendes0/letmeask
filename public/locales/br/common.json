@@ -21,5 +21,9 @@
   "question-textarea": "O que você quer perguntar?",
   "to-send-question": "Para enviar uma pergunta",
   "do-login": "faça seu login",
-  "send-question": "Enviar pergunta"
+  "send-question": "Enviar pergunta",
+  "copy-icon-alt": "Copiar o código da sala",
+  "room-not-found": "Sala não encontrada.",
+  "must-be-logged-in": "Você deve estar logado.",
+  "user-avatar-alt": "Foto de {{name}}"
 }
